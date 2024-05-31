@@ -11,7 +11,8 @@ int main(void){
 
   printf("%s", "\nEnter total amount collected (-1 to quit): $");
   scanf("%lf", &amount);
-  while(amount != 1 || count <= 12){
+  while(amount != -1){
+
     printf("%s", "Enter name of month:");
     scanf("%s", month);
 
@@ -19,6 +20,9 @@ int main(void){
     state_tax = .04 * amount;
     total_tax = county_tax + state_tax;
     count++;
+
+    // Infinite loop without this check for some reason.
+    if(count > 12) break;
 
     printf("%s%.2lf", "Total Collection: $", amount);
     printf("%s%.2lf", "\nSales: $", amount - total_tax);
